@@ -10,8 +10,7 @@ document.addEventListener('DOMContentLoaded', e => {
       key.id = note + i
 
       let img = document.createElement('img')
-      img.src = `./asset/imgs/${note}.png`
-      img.ondragstart = e => false
+      img.src = `./asset/imgs/notes/${note}.png`
       key.appendChild(img)
 
       let audio = document.createElement('audio')
@@ -76,5 +75,18 @@ document.addEventListener('DOMContentLoaded', e => {
     if (note) {
       kk[note].release()
     }
+  })
+
+  let curr_ins = document.querySelector('.instrument.selected')
+  let instruments = document.querySelectorAll('.instrument')
+  instruments.forEach(i => {
+    i.addEventListener('click', e => {
+      curr_ins.classList.remove('selected')
+      curr_ins = i
+      curr_ins.classList.add('selected')
+      Object.values(kk).forEach(note => {
+        note.children[1].src = `./asset/media/${curr_ins.id}/${note.id}.mp3`
+      })
+    })
   })
 })
