@@ -1,10 +1,10 @@
 document.addEventListener('DOMContentLoaded', e => {
   let keys = document.querySelector('.keys')
-  let bt = ['do', 're', 'mi', 'fa', 'so', 'la', 'ti']
+  let notes = ['do', 're', 'mi', 'fa', 'so', 'la', 'ti']
   let kk = {}
 
   for (let i = 3; i > 0; --i) {
-    bt.forEach(note => {
+    notes.forEach(note => {
       let key = document.createElement('div')
       key.className = 'key'
       key.id = note + i
@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', e => {
       key.appendChild(img)
 
       let audio = document.createElement('audio')
-      audio.src = `./asset/media/${note}${i}.mp3`
+      audio.src = `./asset/media/lyre/${note}${i}.mp3`
       key.appendChild(audio)
 
       key.play = e => {
