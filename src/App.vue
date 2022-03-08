@@ -1,13 +1,13 @@
 <template>
   <Settings :config="config" />
-  <Nodes :config="config" />
+  <Notes :config="config" />
 </template>
 
 <script lang="ts">
 import { useCookies } from 'vue3-cookies'
 
 import Settings from './comps/Settings.vue'
-import Nodes from './comps/Nodes.vue'
+import Notes from './comps/Notes.vue'
 
 import { Config } from './utils/config'
 
@@ -16,7 +16,7 @@ const { cookies } = useCookies()
 export default {
   components: {
     Settings,
-    Nodes,
+    Notes,
   },
   data(): any {
     let ins = cookies.get('ins')
@@ -48,5 +48,10 @@ body {
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+}
+
+img {
+  width: 100%;
+  height: 100%;
 }
 </style>
