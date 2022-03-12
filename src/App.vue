@@ -43,6 +43,7 @@ body {
 }
 
 #app * {
+  -webkit-user-drag: none;
   -webkit-user-select: none;
   -webkit-touch-callout: none;
   -moz-user-select: none;
