@@ -1,5 +1,5 @@
 <template>
-  <div class="notes">
+  <div class="notes" v-if="rotate_ok">
     <Note
       v-for="tone of tones"
       :key="tone"
@@ -8,6 +8,7 @@
       :src="`/media/${config.instrument}/${tone}.mp3`"
     />
   </div>
+  <div v-else class="noti"><span>please rotate the screen</span></div>
 </template>
 
 <script lang="ts">
@@ -51,9 +52,12 @@ export default {
 
     const tones = Object.values(map_note)
 
+    const rotate_ok = this.check_rotate()
+
     return {
       map_note,
       tones,
+      rotate_ok,
     }
   },
   computed: {
@@ -73,6 +77,19 @@ export default {
     document.onkeyup = (e) => {
       this.notes.get(e.key)?.release(e)
     }
+    window.onresize = (_e) => {
+      this.rotate_ok = this.check_rotate()
+    }
+    window.onorientationchange = (_e) => {
+      this.rotate_ok = this.check_rotate()
+    }
+  },
+  methods: {
+    check_rotate() {
+      return (
+        window.orientation == 90 || window.screen.width > window.screen.height
+      )
+    },
   },
 }
 </script>
@@ -89,6 +106,24 @@ export default {
   grid-column-gap: 3vw;
   grid-row-gap: 2vw;
   justify-items: center;
+  align-items: center;
+}
+
+.noti {
+  position: relative;
+  top: 30vh;
+  margin: auto;
+  width: 85vw;
+  height: 10vh;
+  background: #363636;
+  color: #ff5050;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1.5em;
+  box-shadow: 0.5em 0.5em 5em 2em black;
+  border-radius: 1em;
+  display: flex;
+  align-content: center;
+  justify-content: center;
   align-items: center;
 }
 
