@@ -6,7 +6,7 @@
       :class="`ins ${ins == config.instrument ? 'selected' : ''}`"
       @click="config.setIns(ins)"
     >
-      <img :src="`/imgs/instruments/${ins}.png`" />
+      <img :src="`imgs/instruments/${ins}.png`" />
     </div>
   </div>
 </template>

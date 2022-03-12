@@ -4,8 +4,8 @@
       v-for="tone of tones"
       :key="tone"
       :ref="tone"
-      :img="`/imgs/notes/${tone.replace(/\d+/, '')}.png`"
-      :src="`/media/${config.instrument}/${tone}.mp3`"
+      :img="`imgs/notes/${tone.replace(/\d+/, '')}.png`"
+      :src="`media/${config.instrument}/${tone}.mp3`"
     />
   </div>
   <div v-else class="noti"><span>please rotate the screen</span></div>
