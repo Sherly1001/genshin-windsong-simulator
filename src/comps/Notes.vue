@@ -61,17 +61,17 @@ export default {
       const map = new Map<string, typeof Note>()
       for (let key in this.map_note) {
         const note = this.$refs[this.map_note[key]] as [typeof Note]
-        map.set(key, note[0])
+        if (note) map.set(key, note[0])
       }
       return map
     },
   },
   mounted() {
     document.onkeydown = (e) => {
-      this.notes.get(e.key)?.play()
+      this.notes.get(e.key)?.play(e)
     }
     document.onkeyup = (e) => {
-      this.notes.get(e.key)?.release()
+      this.notes.get(e.key)?.release(e)
     }
   },
 }
