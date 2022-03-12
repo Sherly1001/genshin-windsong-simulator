@@ -91,4 +91,10 @@ export default {
   justify-items: center;
   align-items: center;
 }
+
+@media only screen and (max-width: 1024px) {
+  .notes {
+    width: 85vw;
+  }
+}
 </style>
