@@ -23,6 +23,12 @@ export default {
       required: true,
     },
   },
+  data() {
+    const last_click = Date.now()
+    return {
+      last_click,
+    }
+  },
   computed: {
     note() {
       return this.$refs.note as HTMLDivElement
@@ -37,8 +43,14 @@ export default {
       this.note.classList.add('pressed')
       this.audio.currentTime = 0
       this.audio.play()
+      this.last_click = Date.now()
     },
-    release(_e: KeyboardEvent | MouseEvent) {
+    release(e: KeyboardEvent | MouseEvent) {
+      const time = Date.now() - this.last_click
+      if (time < 10) {
+        setTimeout(() => this.release(e), 100)
+        return
+      }
       this.note.classList.remove('pressed')
     },
   },

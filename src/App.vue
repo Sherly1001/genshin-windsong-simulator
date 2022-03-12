@@ -49,6 +49,7 @@ body {
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+  -webkit-tap-highlight-color: #0000;
 }
 
 img {
